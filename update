@@ -1,0 +1,36 @@
+server> npm install pm2
+server端
+ "scripts": {
+     "dev": " nodemon src/server.js",
+     "test": "jest",
+     "testwatch": "jest --watch",
+     "start": "node src/server.js",
+     "cluster": "pm2 start src/server.js -i max",
+     "stop": "pm2 stop src/server.js",
+     "delete": "pm2 delete src/server.js"
+   },
+ //我完全不知道为什么这个terminal 不能运行pm2
+  但是直接点击绿色箭头可以运行
+
+外部
+  "scripts": {
+      "devserver": " npm run dev --prefix server",
+      "server": " npm run start --prefix server",
+      "client": "npm run start --prefix client",
+      "watch": "npm-run-all --parallel devserver client",
+      "build": "npm run build --prefix client",
+      "dep": "npm start --prefix server",
+      "deploy": "npm-run-all --parallel build server",
+      "deploy-cluster": "npm-run-all --parallel build serverCluster",
+      "serverCluster": "npm run cluster --prefix server",
+      "testServer": "npm test --prefix server",
+      "testClient": "npm test --prefix client",
+      "test": "npm-run-all --parallel testServer testClient"
+    },
+
+    这个的启动和部署server端和外部都可以运行
+    记得启动以后要求server端手动关闭 不然第二次启动不起来
+
+   操你妈 看来就是包的问题
+   代码没问题
+

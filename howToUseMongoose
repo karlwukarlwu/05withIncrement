@@ -1,0 +1,44 @@
+  基本上就是你要是全是json 字符串套字符串 你就用NoSql
+   你要是又是对象数组 对象套对象 就用sql
+   经常改变用NoSql
+   不经常改变用sql
+
+   连接mangoDB
+npm install mongoose
+配置好了以后去databa旁边的connect 里面拿链接
+
+
+跟那个postqreSQL的写法差不多
+都是在文件里定义格式 和mysql不一样
+mongoose的乱七八糟的东西都在文档里
+要查直接看文档写
+
+
+mongoose 在创建的时候会给不同数据给配id
+你可以用id来查找数据
+这个是默认生成的
+
+__v是版本号
+也是mongo默认生成的
+在网站的collection里面生成的
+
+问题来了当用外部database的时候
+如何调用Jest?
+换环境 create
+    在server里面写这一行
+ "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "jest": {
+    "testEnvironment": "node"
+  },
+  然后要加上这个jest
+  beforeAll(async () => {
+          await mongoConnect();
+      } )
+      // 要造一个断开的功能不然jest有的地方会报错
+      afterAll(async () => {
+          await mongoDisconnect();
+      })
+
+要把所有的测试describe都放一个大的describe里面
