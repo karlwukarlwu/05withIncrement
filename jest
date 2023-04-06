@@ -1,0 +1,22 @@
+API测试用的
+安装到server端cd
+npm install jest --save-dev(后面这个是安装到开发环境)
+使用jest
+单独建立一个__test__文件夹，里面放入要测试的文件，比如index.js
+或者在对应的文件夹下建立
+    自定义名称.spec\test.js文件
+
+    有了jest 加上这个
+     "scripts": {
+        "dev": " nodemon src/server.js",
+        "test": "jest",
+        "test:watch": "jest --watch",
+
+        想用wathc 得搭配git 使用
+        --watch is not supported without git/hg, please use --watchAll
+
+        "start": "node src/server.js"
+      },
+
+另一个测试的包
+npm install supertest --save-dev

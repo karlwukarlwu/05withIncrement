@@ -1,0 +1,95 @@
+第一步 先写 npm init 或者直接 npm init -y 全部默认
+    接下来会生成一个json 文件 package 告诉我们详细信息
+
+     "dependencies": {
+        "axios": "^1.3.4"
+      } 这个是告诉我们我们安装了什么包
+     "scripts": {
+        "start": "node https.js",
+        "test": "echo \"Error: no test specified\" && exit 1"
+      }, 这个start 手写 告诉我们从哪个文件开始运行
+
+第二步 安装步骤 npm i name
+i是install
+
+npm audit 检测下载的包安不安全
+npm audit fix 修理不安全的包
+
+nodemon是一个实时让代码更新效果的包
+-g是直接安在本地nodeJs文件夹中 不加g是 把文件按到目标项目的目录下
+ npm install -g nodemon
+全局卸载
+ npm uninstall -g  nodemon
+
+本项目安装 上传时候不用管
+npm install nodemon --save-dev
+这个写法更专业 但是不用也行
+  "devDependencies": {
+    "nodemon": "^2.0.22"
+  }
+  安到了这个路径下 基本上测试用 基本上当可选安装了
+
+nodemon 的配置方式
+"scripts": {
+    "start": "node request.js",
+    "dev": "nodemon request.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+
+nodemon的启动方式
+npm run dev
+
+使用 handlebars技术
+这个是类似jsp的技术
+npm install hbs --save
+
+如何解决跨域问题
+server 端安装
+npm install cors
+
+几种外界启动的方式
+ "scripts": {
+    "sever": "cd server && npm run dev",
+    "client": "cd client && npm run start",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+
+  也可以这样写
+    "scripts": {
+      "sever": " npm run dev --prefix server",
+      "client": "npm run start --prefix client",
+      "test": "echo \"Error: no test specified\" && exit 1"
+    },
+
+他讲的那个共同启动& 不好使 就这样吧
+用着共同启动
+ npm install npm-run-all --save-dev
+ 这样配置
+  "scripts": {
+     "sever": " npm run dev --prefix server",
+     "client": "npm run start --prefix client",
+     "start": "npm-run-all --parallel sever client",
+     "test": "echo \"Error: no test specified\" && exit 1"
+   },
+
+   不要用共同安装 那个一直会报错
+       "install-server": "npm install --prefix server",
+       "install-client": "npm install --prefix client",
+       "install": "npm-run-all --parallel install-server install-client",
+       我试了无数次还是不行 应该是bug
+
+   让server 和client 一个端口启动
+   直接手动复制 别用这个方法 这个方法生成的文件夹是错的
+
+   具体的 我到时候直接把他的关于Windows 的描述给复制一个文档
+   他的安装、启动、部署都是苹果版本的
+
+   server 安装Morgan
+    npm install morgan
+    这个中间件是帮你看每次的请求的
+    app.use(morgan('combined'))
+
+    By using this format, Morgan will log all of this information for each request
+    and response to the console or a log file (depending on how you have configured it).
+    This can be very helpful for troubleshooting issues in your application,
+    as it provides a complete view of the request and response details.

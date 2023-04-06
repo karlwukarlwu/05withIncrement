@@ -1,0 +1,46 @@
+用build in cluster module
+cluster.isMaster
+cluster.fork();
+
+用 os 来测电脑是几核的
+    const NUM_WORKERS = os.cpus().length;
+
+进一步 用pm2 来解决负载均衡
+npm install pm2 -g -g是全局
+
+这些都是terminal运行的
+开始一个文件
+pm2 start sHP.js
+显示所有的进程
+pm2 list
+停止一个进程
+pm2 stop 0(id)/也可以是name
+开始一个进程
+pm2 start 0
+删除一个进程
+pm2 delete 0
+
+
+//pm2 start 文件名.js -i 2
+// -i 是instance
+// 2  max是最大的
+// 直接terminal写这个就可以了
+//pm2 logs 这个可以看log
+//pm2 restart  sHP
+//             这个是任务的name 输入这个重启
+//一些命令行的操作
+// pm2 start sHP.js -l logs.txt
+// 启动并且把log写到logs.txt里面
+//pm2 start sHP.js -l logs.txt -i max加上这个就是max启动
+//pm2 show 0
+// 这个是查看进程的信息 0是进程的id
+// pm2 stop 4
+// 单独停止进程 4是进程的id
+//pm2 start 4
+// 单独启动进程 4是进程的id
+//pm2 monitor
+// 这个是查看所有进程的信息 有个网页
+
+//想要修改完了不用重启
+//pm2 reload sHP
+// 这个是重启进程
