@@ -40,6 +40,7 @@ function loadPlanetsData() {
                     // },{
                     //     upsert: true,
                     // })
+                    //这个方法会上传文件到mongo
                     await savePlanet(data)
 
                     // 这样写的话如果有重复的就会报错
