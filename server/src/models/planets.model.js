@@ -94,6 +94,7 @@ async function getAllPlanets() {
 // 将之前的代码封装成一个函数
 async function savePlanet(planet) {
     try {
+        //这里和mongoDB进行交互 上传数据
         await planets.updateOne({
             keplerName: planet.kepler_name,
         }, {
